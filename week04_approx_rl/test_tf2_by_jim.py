@@ -25,9 +25,9 @@ def test_using_FAPI():
     x = Conv2D(filters = 32, kernel_size = (3,3), strides = (2, 2), activation = 'relu')(x)
     x = Conv2D(filters = 64, kernel_size = (3,3), strides = (2, 2), activation = 'relu')(x)
     x = Flatten()(x)
-    outputs = Dense(units = 256, activation = 'relu')(x)
+    outputs = Dense(units = 4, activation = 'relu')(x)
     model = tf.keras.Model(inputs = inputs, outputs = outputs, name = 'nn')
-    #model.summary()
+    model.summary()
     #tf.keras.utils.plot_model(model, 'nn.png', show_shapes = True)
     base_learning_rate = 0.001
     model.compile(optimizer=tf.keras.optimizers.RMSprop(lr=base_learning_rate),
@@ -36,6 +36,12 @@ def test_using_FAPI():
     state_t =  tf.zeros(shape=(4, 64, 64, 1))# 自己见一个模拟图像
     predict = model.predict(state_t)
     print(predict.shape)
+    print('redict = {}'.format(predict))
+    #
+    label = tf.ones((4))
+    rel = model.evaluate(state_t, label)
+    print(rel)
+    
 if __name__=='__main__':
-    define_nn()
-    #test_using_FAPI()
+    #define_nn()
+    test_using_FAPI()
