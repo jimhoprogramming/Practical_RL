@@ -10,5 +10,5 @@ def get_action_value(mdp, state_values, state, action, gamma):
         r = mdp.get_reward(state, action, s1)
         v = state_values[s1]
         q += p_value * (r + gamma * v)
-    print(q)
+    #print(q)
     return q
