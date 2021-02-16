@@ -6,7 +6,7 @@ import gym
 import gym.spaces as spaces
 from gym.envs import atari
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from env_batch import ParallelEnvBatch
 cv2.ocl.setUseOpenCL(False)
