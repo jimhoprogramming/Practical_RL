@@ -5,8 +5,7 @@ import numpy as np
 
 class EnvRunner:
   """ Reinforcement learning runner in an environment with given policy """
-  def __init__(self, env, policy, nsteps,
-               transforms=None, step_var=None):
+  def __init__(self, env, policy, nsteps, transforms=None, step_var=None):
     self.env = env
     self.policy = policy
     self.nsteps = nsteps
