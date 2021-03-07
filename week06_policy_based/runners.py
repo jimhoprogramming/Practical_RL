@@ -12,7 +12,7 @@ class EnvRunner:
     self.transforms = transforms or []
     self.step_var = step_var if step_var is not None else 0
     self.state = {"latest_observation": self.env.reset()}
-    print(self.state.shape)
+    #print('status len :{}'.format(len(self.state)))
   @property
   def nenvs(self):
     """ Returns number of batched envs or `None` if env is not batched """
@@ -51,7 +51,8 @@ class EnvRunner:
         self.state["env_steps"] = i + 1
         self.state["latest_observation"] = self.env.reset()
 
-    trajectory.update(observations=observations, rewards=rewards, resets=resets)  # 轨迹放入新的逐步增加的 o, r, d keys 和值
+    trajectory.update(observations=observations, rewards=rewards, resets=resets)  
+    # 轨迹放入新的逐步增加的 observations, rewards, done keys 和值
     trajectory["state"] = self.state
 
     for transform in self.transforms:   # 把列表变形，收缩维度
